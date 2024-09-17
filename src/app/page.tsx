@@ -34,18 +34,19 @@ export default function Home() {
                 {isLoading ? (
                     <span className="loading loading-ring loading-lg"></span>
                 ) : data ? (
-                    <div>
-                        <div className="text-center">Prediction</div>
+                    <>
+                        <div className="text-center mb-3">{data.prediction_text}</div>
                         <Bar
+                          style={{ width: "100%", height: "100%" }}
                             data={{
                                 labels: data?.result.map((x) => x.year),
                                 datasets: [
                                     {
                                         label: "Year",
                                         data: data?.result.map((x) => x.value) || [],
-                                        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-                                        borderColor: ["rgba(255, 99, 132, 1)"],
-                                        borderWidth: 1,
+                                        backgroundColor: ["#00a96e"],
+                                        borderColor: ["#075439"],
+                                        borderWidth: 3,
                                     },
                                 ],
                             }}
@@ -53,11 +54,15 @@ export default function Home() {
                                 scales: {
                                     y: {
                                         beginAtZero: true,
+                                        
                                     },
+                                    x: {
+                                        beginAtZero: true,
+                                    }
                                 },
                             }}
                         />
-                    </div>
+                    </>
                 ) : (
                     <div>No data</div>
                 )}

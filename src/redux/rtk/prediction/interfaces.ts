@@ -1,6 +1,7 @@
 export interface IPredictResponse {
     prompt: string;
     result: Array<IResultPredict>;
+    prediction_text: string;
 }
 
 export interface IResultPredict {
